@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     
     @OnClick(R.id.tv_login)
     public void onClick(View view) {
+    
     }
     
     @Override

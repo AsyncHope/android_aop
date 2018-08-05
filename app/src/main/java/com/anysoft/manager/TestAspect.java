@@ -2,6 +2,8 @@ package com.anysoft.manager;
 
 import android.util.Log;
 
+import com.anysoft.util.ReflectUtil;
+
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -31,6 +33,11 @@ public class TestAspect {
             List<Object> args = Arrays.asList(joinPoint.getArgs());
             Log.e(TAG, "className: " + className + ", methodName: " + methodName
                     + ", args: " + args.toArray().toString());
+            
+            if (methodName.equals("onClick")){
+                String et_login_mobile = (String) ReflectUtil.getFieldValueByName(target, "et_login_mobile");
+                Log.e(TAG, "onClick: " + et_login_mobile);
+            }
         } catch (Exception e) {
             Log.e(TAG, "onPageAfter: " + e.toString());
         }
