@@ -30,7 +30,7 @@ public class TestAspect {
             String methodName = joinPoint.getSignature().getName();
             List<Object> args = Arrays.asList(joinPoint.getArgs());
             Log.e(TAG, "className: " + className + ", methodName: " + methodName
-                    + ", args: " + args.toArray());
+                    + ", args: " + args.toArray().toString());
         } catch (Exception e) {
             Log.e(TAG, "onPageAfter: " + e.toString());
         }
