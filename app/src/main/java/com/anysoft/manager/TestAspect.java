@@ -1,6 +1,7 @@
 package com.anysoft.manager;
 
 import android.util.Log;
+import android.widget.EditText;
 
 import com.anysoft.util.ReflectUtil;
 
@@ -35,8 +36,8 @@ public class TestAspect {
                     + ", args: " + args.toArray().toString());
             
             if (methodName.equals("onClick")){
-                String et_login_mobile = (String) ReflectUtil.getFieldValueByName(target, "et_login_mobile");
-                Log.e(TAG, "onClick: " + et_login_mobile);
+                EditText editText = (EditText) ReflectUtil.getTargetByField(target, "et_login_mobile");
+                Log.e(TAG, "onClick: " + editText.getText().toString()+",hint"+editText.getHint().toString());
             }
         } catch (Exception e) {
             Log.e(TAG, "onPageAfter: " + e.toString());

@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -18,26 +17,29 @@ import butterknife.OnClick;
 public class LoginActivity extends AppCompatActivity {
     
     @BindView(R.id.et_login_mobile)
-    EditText etLoginMobile;
+    EditText et_login_mobile;
     @BindView(R.id.ll_login_mobile_container)
-    RelativeLayout llLoginMobileContainer;
+    RelativeLayout ll_login_mobile_container;
     @BindView(R.id.et_login_password)
-    EditText etLoginPassword;
+    EditText et_login_password;
     @BindView(R.id.ll_login_password_container)
-    RelativeLayout llLoginPasswordContainer;
+    RelativeLayout ll_login_password_container;
     @BindView(R.id.tv_login)
-    TextView tvLogin;
+    TextView tv_login;
+    private String mobileNo;
     
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        et_login_mobile.setText("测试啦");
+//        View viewById = findViewById(R.id.et_login_mobile);
     }
     
     @OnClick(R.id.tv_login)
     public void onClick(View view) {
-    
+        mobileNo = et_login_mobile.getText().toString();
     }
     
     @Override
@@ -49,5 +51,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
     }
+    
 }
 

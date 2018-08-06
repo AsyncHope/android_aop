@@ -1,5 +1,8 @@
 package com.anysoft.util;
 
+import android.app.Activity;
+import android.view.View;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -104,5 +107,24 @@ public class ReflectUtil {
         byte[] items = fildeName.getBytes();
         items[0] = (byte) ((char) items[0] - 'a' + 'A');
         return new String(items);
+    }
+    
+    /**
+     * 通过file字段获取对应的view 对象
+     */
+    public static Object getTargetByField(Object thisClass, String fieldName) {
+        View view = null;
+        try {
+            if (thisClass instanceof Activity) {
+                Activity activity = (Activity) thisClass;
+                int id = activity.getResources().getIdentifier(fieldName,
+                        "id", activity.getClass().getPackage().getName());
+                view = ((Activity) thisClass).findViewById(id);
+            }
+            return view;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
